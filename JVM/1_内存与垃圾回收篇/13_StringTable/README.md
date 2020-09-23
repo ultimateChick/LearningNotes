@@ -457,7 +457,7 @@ System.out.println(s == s2); // false
 String s3 = new String("1") + new String("1");
 s3.intern();
 String s4 = "11";
-System.out.println(s3 == s4); // true
+System.out.println(s3 == s4); // false
 ```
 
 输出结果
@@ -486,15 +486,15 @@ System.out.println(s == s2); // true
 >
 > 这是因为在JDK6中创建了一个新的对象 "11"，也就是有了新的地址， s2 = 新地址
 >
-> 而在JDK7中，在JDK7中，并没有创新一个新对象，而是指向常量池中的新对象
+> 而在JDK7中，在JDK7中，并没有创新一个新对象，而是在常量池中复制了一份指向堆空间中"11"的引用
 
 #### JDK7中
 
-```
+```java
 String s = new String("1");
 s.intern();
 String s2 = "1";
-System.out.println(s == s2); // true
+System.out.println(s == s2); // false
 
 String s3 = new String("1") + new String("1");
 s3.intern();
